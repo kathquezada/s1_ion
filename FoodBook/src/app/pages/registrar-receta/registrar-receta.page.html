@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>registrar-receta</ion-title>
+    <ion-button slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">registrar-receta</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="nuevaRecetaForm">
+   
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Ingredientes</mat-label>
+      <textarea matInput formControlName="ingredientes"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Tiempo</mat-label>
+      <input matInput formControlName="tiempo">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="continuar()">
+      Continuar
+    </button>
+  </form>
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Recetas Guardadas</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-list *ngIf="recetas.length > 0">
+    <ion-item *ngFor="let receta of recetas">
+      <ion-label>
+        <h2>Nombre: {{ receta.nombre }}</h2>
+        <p><strong>Tiempo:</strong> {{ receta.tiempo }}</p>
+        <p><strong>Ingredientes:</strong></p>
+        <ul>
+          <li>{{ receta.ingredientes }}</li>
+        </ul>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="recetas.length === 0">
+    No hay recetas guardadas.
+  </div>
+
+</ion-content>
