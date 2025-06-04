@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormArray,FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IonButton,IonMenuButton,IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,10 +29,12 @@ export class RegistrarRecetaPage implements OnInit {
   ngOnInit() {
     this.nuevaRecetaForm = this.fb.group({
       nombre: [null, Validators.required],
-      ingredientes: ['', Validators.required],
-      tiempo: ['']
+      ingredientes: this.fb.array([this.fb.control('', Validators.required)]),
+      tiempo: [''],
+      instrucciones:[null, Validators.required],
     });
   }
+
   continuar() {
   if (this.nuevaRecetaForm.valid) {
     const receta = this.nuevaRecetaForm.value;
@@ -52,6 +54,20 @@ export class RegistrarRecetaPage implements OnInit {
     console.log('Formulario inválido');
   }
 }
+
+  // funciones CRUD campo ingredientes
+
+  get ingredientes(): FormArray {
+  return this.nuevaRecetaForm.get('ingredientes') as FormArray;
+  }
+
+  agregarIngrediente() {
+    this.ingredientes.push(this.fb.control('', Validators.required));
+  }
+
+  eliminarIngrediente(index: number) {
+    this.ingredientes.removeAt(index);
+  }
 
 
 }

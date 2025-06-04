@@ -16,8 +16,10 @@
         <p><strong>Tiempo:</strong> {{ receta.tiempo }}</p>
         <p><strong>Ingredientes:</strong></p>
         <ul>
-          <li>{{ receta.ingredientes }}</li>
+          <li *ngFor="let ing of receta.ingredientes">{{ ing }}</li>
         </ul>
+        <p><strong>Instrucciones:</strong>{{ receta.instrucciones }}</p>
+        
       </ion-label>
     </ion-item>
   </ion-list>

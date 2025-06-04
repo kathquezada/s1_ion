@@ -14,26 +14,40 @@
     </ion-toolbar>
   </ion-header>
 
-  <form [formGroup]="nuevaRecetaForm">
-   
+  <mat-card>
+  <form [formGroup]="nuevaRecetaForm" (ngSubmit)="continuar()">
 
     <mat-form-field appearance="fill">
-      <mat-label>Nombre</mat-label>
-      <input matInput formControlName="nombre">
+      <mat-label>Nombre de la receta</mat-label>
+      <input matInput formControlName="nombre" required>
     </mat-form-field>
 
+    
     <mat-form-field appearance="fill">
-      <mat-label>Ingredientes</mat-label>
-      <textarea matInput formControlName="ingredientes"></textarea>
+      <mat-label>Instrucciones</mat-label>
+      <input matInput formControlName="instrucciones" required>
     </mat-form-field>
 
+    <div formArrayName="ingredientes">
+      <div *ngFor="let ing of ingredientes.controls; let i = index">
+        <mat-form-field appearance="fill">
+          <mat-label>Ingrediente {{ i + 1 }}</mat-label>
+          <input matInput [formControlName]="i" required>
+        </mat-form-field>
+        <button mat-button color="warn" type="button" (click)="eliminarIngrediente(i)">Eliminar</button>
+      </div>
+    </div>
+
+
+    <button mat-button type="button" color="primary" (click)="agregarIngrediente()">Agregar ingrediente</button>
+
     <mat-form-field appearance="fill">
-      <mat-label>Tiempo</mat-label>
+      <mat-label>Tiempo de preparación</mat-label>
       <input matInput formControlName="tiempo">
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="continuar()">
-      Continuar
-    </button>
+    <button mat-raised-button color="primary" type="submit">Guardar receta</button>
   </form>
+</mat-card>
+
 </ion-content>

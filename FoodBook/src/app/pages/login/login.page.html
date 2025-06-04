@@ -10,6 +10,13 @@
 <mat-card>
   
   <mat-card-content>
+    <div class="imagen-login">
+      <img src="https://image.freepik.com/vector-gratis/diseno-logotipo-libro-recetas-comida_139372-114.jpg?w=1380" alt="">
+    </div>
+    <div>
+      <h2 class="ion-text-center">Bienvenido</h2>
+      <p class="ion-text-center">Inicia sesión para continuar</p>
+    </div>
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <mat-form-field appearance="fill">
         <mat-label>Correo</mat-label>

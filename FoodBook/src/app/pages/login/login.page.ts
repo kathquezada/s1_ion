@@ -41,7 +41,7 @@ export class LoginPage {
       console.log(this.loginForm.value);
       // Lógica de autenticación
       // Redirige al Home
-      this.router.navigate(['/nuevo-entrenamiento']);
+      this.router.navigate(['/recetas-guardadas']);
     }
   }
 }
